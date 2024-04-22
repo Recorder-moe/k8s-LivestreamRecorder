@@ -2,7 +2,7 @@
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
 metadata:
-  namespace: recordermoe
+  namespace: {{ .Release.Namespace }}
   name: recordermoe-role
   labels:
   {{- include "recorder.labels" . | nindent 4 }}
@@ -20,14 +20,14 @@ rules:
 kind: RoleBinding
 apiVersion: rbac.authorization.k8s.io/v1
 metadata:
-  namespace: recordermoe
+  namespace: {{ .Release.Namespace }}
   name: recordermoe-rb
   labels:
   {{- include "recorder.labels" . | nindent 4 }}
 subjects:
 - kind: ServiceAccount
   name: default
-  namespace: recordermoe
+  namespace: {{ .Release.Namespace }}
 roleRef:
   kind: Role
   name: recordermoe-role
@@ -53,7 +53,7 @@ metadata:
 subjects:
 - kind: ServiceAccount
   name: default
-  namespace: recordermoe
+  namespace: {{ .Release.Namespace }}
 roleRef:
   kind: ClusterRole
   name: recordermoe-list-namespace-role
