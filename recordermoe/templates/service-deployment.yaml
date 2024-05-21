@@ -37,8 +37,6 @@ spec:
           value: {{ quote .Values.seq.serverUrl }}
         - name: Service__JobService
           value: Kubernetes
-        - name: Service__SharedVolumeService
-          value: CustomPVC
         - name: Service__StorageService
           value: {{ quote .Values.storageService }}
         - name: Service__DatabaseService
@@ -71,8 +69,6 @@ spec:
           value: "true"
         - name: Kubernetes__Namespace
           value: {{ .Release.Namespace }}
-        - name: Kubernetes__PVCName
-          value: {{ include "recorder.fullname" . }}-pvc
         - name: S3__Endpoint
           value: {{ quote .Values.s3.endpoint }}
         - name: S3__Secure
