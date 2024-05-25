@@ -35,7 +35,7 @@ spec:
         - name: CORS_SUPPORT_CREDENTIALS
           value: "true"
         - name: FUNCTIONS_WORKER_RUNTIME
-          value: dotnet
+          value: dotnet-isolated
         - name: CORS_ALLOWED_ORIGINS
           value: "https://{{ .Values.host }}"
         - name: FrontEndUri
