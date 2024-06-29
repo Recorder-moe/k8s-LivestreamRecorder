@@ -95,6 +95,14 @@ spec:
         # https://stackoverflow.com/a/64404153/8706033
         - name: WEBSITE_HOSTNAME
           value: {{ quote .Values.host }}
+        livenessProbe:
+          httpGet:
+            path: /api/healthz
+            port: 8080
+          initialDelaySeconds: 20
+          periodSeconds: 10
+          timeoutSeconds: 2
+          failureThreshold: 3
       - name: azurite-emulator
         image: mcr.microsoft.com/azure-storage/azurite
         imagePullPolicy: IfNotPresent

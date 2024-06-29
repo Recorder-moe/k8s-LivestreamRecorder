@@ -73,6 +73,14 @@ spec:
           subPath: config.jsonc
         securityContext:
           allowPrivilegeEscalation: false
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: 8080
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          timeoutSeconds: 2
+          failureThreshold: 3
       volumes:
       - configMap:
           name: {{ include "recorder.fullname" . }}-config
