@@ -85,6 +85,10 @@ spec:
           value: {{ quote .Values.oAuth2.gitHub.clientID }}
         - name: GITHUB_PROVIDER_AUTHENTICATION_SECRET
           value: {{ quote .Values.oAuth2.gitHub.clientSecret }}
+        - name: Twitch_ClientId
+          value: {{ quote .Values.twitch.clientID }}
+        - name: Twitch_ClientSecret
+          value: {{ quote .Values.twitch.clientSecret }}
         - name: KUBERNETES_CLUSTER_DOMAIN
           value: {{ quote .Values.kubernetes.clusterDomain }}
         # Issue: Azure Durable Function HttpStart failure: Webhooks are not configured
